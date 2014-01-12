@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GooTa2.Data
 {
+  [Table]
   public class Task : INotifyPropertyChanged, INotifyPropertyChanging
   {
     private string _id;
@@ -127,6 +128,7 @@ namespace GooTa2.Data
     [Column]
     private string Status
     {
+      get { return _status; }
       set
       {
         if (value != _status)
@@ -194,13 +196,19 @@ namespace GooTa2.Data
     public event PropertyChangedEventHandler PropertyChanged;
     private void NotifyPropertyChanged(string property)
     {
-      PropertyChanged(this, new PropertyChangedEventArgs(property));
+      if (PropertyChanged != null)
+      {
+        PropertyChanged(this, new PropertyChangedEventArgs(property));
+      }
     }
 
     public event PropertyChangingEventHandler PropertyChanging;
     private void NotifyPropertyChanging(string property)
     {
-      PropertyChanging(this, new PropertyChangingEventArgs(property));
+      if (PropertyChanging != null)
+      {
+        PropertyChanging(this, new PropertyChangingEventArgs(property));
+      }
     }
   }
 
@@ -208,8 +216,27 @@ namespace GooTa2.Data
   {
     private static string DBConnection = "Data Source=isostore:/GooTaTask.sdf";
 
-    public TaskDataContext() : base(DBConnection) { }
+    private static TaskDataContext _instance;
+    public static TaskDataContext Instance
+    {
+      get
+      {
+        if (_instance == null)
+        {
+          _instance = new TaskDataContext();
+        }
+        return _instance;
+      }
+    }
 
     public Table<Task> Tasks;
+
+    private TaskDataContext() : base(DBConnection) { }
+
+    public static List<Task> GetAllTasks()
+    {
+      var tasks = from Task task in Instance.Tasks select task;
+      return new List<Task>(tasks);
+    }
   }
 }

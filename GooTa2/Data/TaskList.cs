@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GooTa2.Data
 {
+  [Table]
   public class TaskList : INotifyPropertyChanged, INotifyPropertyChanging
   {
     private string _id;
@@ -78,13 +79,19 @@ namespace GooTa2.Data
     public event PropertyChangedEventHandler PropertyChanged;
     private void NotifyPropertyChanged(string property)
     {
-      PropertyChanged(this, new PropertyChangedEventArgs(property));
+      if (PropertyChanged != null)
+      {
+        PropertyChanged(this, new PropertyChangedEventArgs(property));
+      }
     }
 
     public event PropertyChangingEventHandler PropertyChanging;
     private void NotifyPropertyChanging(string property)
     {
-      PropertyChanging(this, new PropertyChangingEventArgs(property));
+      if (PropertyChanging != null)
+      {
+        PropertyChanging(this, new PropertyChangingEventArgs(property));
+      }
     }
   }
 
@@ -92,8 +99,27 @@ namespace GooTa2.Data
   {
     private static string DBConnection = "Data Source=isostore:/GooTaTaskList.sdf";
 
-    public TaskListDataContext() : base(DBConnection) { }
+    private static TaskListDataContext _instance;
+    public static TaskListDataContext Instance
+    {
+      get
+      {
+        if (_instance == null)
+        {
+          _instance = new TaskListDataContext();
+        }
+        return _instance;
+      }
+    }
 
     public Table<TaskList> TaskLists;
+
+    private TaskListDataContext() : base(DBConnection) { }
+
+    public static List<TaskList> AllLists()
+    {
+      var lists = from TaskList list in Instance.TaskLists select list;
+      return new List<TaskList>();
+    }
   }
 }

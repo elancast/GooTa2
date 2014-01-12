@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Diagnostics;
 using System.Resources;
@@ -77,25 +78,19 @@ namespace GooTa2
         PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
       }
 
+      // My stuff to init
+      InitDatabases();
     }
 
     private void InitDatabases()
     {
-      using (TaskListDataContext db = new TaskListDataContext())
+      DataContext[] dbs =
       {
-        if (!db.DatabaseExists())
-        {
-          db.CreateDatabase();
-        }
-      }
-      using (TaskDataContext db = new TaskDataContext())
-      {
-        if (!db.DatabaseExists())
-        {
-          db.CreateDatabase();
-        }
-      }
-      using (GAccountDataContext db = new GAccountDataContext()) 
+        TaskListDataContext.Instance,
+        TaskDataContext.Instance,
+        GAccountDataContext.Instance
+      };
+      foreach (DataContext db in dbs)
       {
         if (!db.DatabaseExists())
         {
