@@ -1,0 +1,94 @@
+          <!--
+          <Border Padding="7" Margin="20" Background="Red" Grid.Row="0" Grid.Column="1">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <TextBlock
+                Grid.Row="0"
+                Text="200"
+                Foreground="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="64"
+                Margin="0"
+              />
+              <TextBlock 
+                Grid.Row="1"
+                Text="quick add" 
+                Foreground="White"
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Center" 
+                Margin="0" 
+                FontFamily="Segoe WP Semibold" 
+                FontSize="23"
+              />
+            </Grid>
+          </Border>
+          <Border Padding="7" Margin="20" Background="Green" Grid.Row="2" Grid.Column="1">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <TextBlock 
+                Grid.Row="0" 
+                Grid.ColumnSpan="2"
+                Text="test test test test test" 
+                TextWrapping="NoWrap" 
+                HorizontalAlignment="Left" 
+                TextTrimming="WordEllipsis" 
+                Foreground="White" 
+                VerticalAlignment="Top" 
+                FontSize="23" 
+                FontFamily="Segoe WP Semibold" 
+              />
+              <TextBlock 
+                Grid.Row="1" 
+                Grid.Column="0"
+                Text="6" 
+                HorizontalAlignment="Center"  
+                Foreground="White" 
+                VerticalAlignment="Bottom" 
+                FontSize="45" 
+                FontFamily="Segoe WP Light" 
+              />
+              <TextBlock 
+                Grid.Row="1" 
+                Grid.Column="1"
+                Text="20" 
+                HorizontalAlignment="Center"  
+                Foreground="White" 
+                VerticalAlignment="Bottom" 
+                FontSize="45" 
+                FontFamily="Segoe WP Light" 
+              />
+              <TextBlock 
+                Grid.Row="2" 
+                Grid.Column="0"
+                Text="due soon" 
+                HorizontalAlignment="Center"  
+                Foreground="White" 
+                VerticalAlignment="Top" 
+                FontSize="16" 
+                FontFamily="Segoe WP Semibold" 
+              />
+              <TextBlock 
+                Grid.Row="2" 
+                Grid.Column="1"
+                Text="total" 
+                HorizontalAlignment="Center"  
+                Foreground="White" 
+                VerticalAlignment="Top" 
+                FontSize="16" 
+                FontFamily="Segoe WP Semibold" 
+              />
+            </Grid>
+          </Border>
+          -->
