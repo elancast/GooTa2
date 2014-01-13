@@ -25,7 +25,7 @@
           <TextBlock Text="{Binding}" FontSize="56" Foreground="White" />
         </DataTemplate>
       </phone:Pivot.HeaderTemplate>
-      <phone:PivotItem Header="recent lists" Margin="10,10" Padding="25,5" Background="Black">
+      <phone:PivotItem Header="recent lists" Margin="10" Padding="25,5" Background="Black">
         <Grid Name="RecentListsGrid">
           <Grid.RowDefinitions>
             <RowDefinition Height="*" />

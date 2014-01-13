@@ -34,6 +34,12 @@ namespace GooTa2
       this.FillRecentListsGrid();
     }
 
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+      base.OnNavigatedTo(e);
+      DataContext = App.SummaryPageViewModel;
+    }
+
     private void FillRecentListsGrid()
     {
       List<TaskList> list = App.SummaryPageViewModel.PopularLists;
@@ -99,7 +105,9 @@ namespace GooTa2
 
     private void OnAccountTap(object sender, System.Windows.Input.GestureEventArgs e)
     {
-
+      string email = (sender as TextBlock).Text;
+      string path = "/EditAccountPage.xaml?email=" + email;
+      NavigationService.Navigate(new Uri(path, UriKind.Relative));
     }
   }
 }

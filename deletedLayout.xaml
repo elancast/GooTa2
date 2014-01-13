@@ -92,3 +92,22 @@
             </Grid>
           </Border>
           -->
+
+  <!-- TEMPLATE: -->
+  <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>      
+    <StackPanel Grid.Row="0">
+      <Image Height="100" Margin="0,0,0,0" Grid.Row="0" VerticalAlignment="Top" />
+      <Border Background="DarkSlateGray" Padding="25,10">
+        <TextBlock Text="edit account" FontSize="56" Foreground="White" FontFamily="Segoe WP SemiLight" />
+      </Border>
+    </StackPanel>
+    <Border Grid.Row="1" Background="DarkSlateGray" Padding="10">
+      <Grid Background="Black">
+        
+      </Grid>
+    </Border>
+  </Grid>
