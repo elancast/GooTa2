@@ -35,6 +35,19 @@ namespace GooTa2
       }
     }
 
+    private static SummaryViewModel _summaryPageViewModel;
+    public static SummaryViewModel SummaryPageViewModel
+    {
+      get
+      {
+        if (_summaryPageViewModel == null)
+        {
+          _summaryPageViewModel = new SummaryViewModel();
+        }
+        return _summaryPageViewModel;
+      }
+    }
+
     /// <summary>
     /// Provides easy access to the root frame of the Phone Application.
     /// </summary>

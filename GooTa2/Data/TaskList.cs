@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace GooTa2.Data
 {
@@ -76,6 +78,14 @@ namespace GooTa2.Data
       }
     }
 
+    public SolidColorBrush AccountColorBrush
+    {
+      get
+      {
+        return new SolidColorBrush(Colors.Green);
+      }
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
     private void NotifyPropertyChanged(string property)
     {
@@ -116,10 +126,10 @@ namespace GooTa2.Data
 
     private TaskListDataContext() : base(DBConnection) { }
 
-    public static List<TaskList> AllLists()
+    public static ObservableCollection<TaskList> AllLists()
     {
       var lists = from TaskList list in Instance.TaskLists select list;
-      return new List<TaskList>();
+      return new ObservableCollection<TaskList>(lists);
     }
   }
 }

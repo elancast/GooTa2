@@ -9,6 +9,9 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
+using GooTa2.Data;
+using GooTa2.ViewModels;
+
 namespace GooTa2
 {
   public partial class SummaryPage : PhoneApplicationPage
@@ -25,6 +28,7 @@ namespace GooTa2
     public SummaryPage()
     {
       InitializeComponent();
+      DataContext = App.SummaryPageViewModel;
 
       // Initialize UI
       this.FillRecentListsGrid();
@@ -32,7 +36,8 @@ namespace GooTa2
 
     private void FillRecentListsGrid()
     {
-      for (int i = 0; i < _boxColors.Length; i++)
+      List<TaskList> list = App.SummaryPageViewModel.PopularLists;
+      for (int i = 0; i < Math.Min(_boxColors.Length, list.Count); i++)
       {
         // TODO: Fill in with details from tasks lists!
         Border box = RenderSummaryBox(i, "Test task list", i);
@@ -80,6 +85,11 @@ namespace GooTa2
         Background = new SolidColorBrush(_boxColors[position]),
         Child = grid
       };
+    }
+
+    private void OnTaskTap(object sender, System.Windows.Input.GestureEventArgs e)
+    {
+
     }
   }
 }

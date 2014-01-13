@@ -6,6 +6,7 @@ using System.Data.Linq.Mapping;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace GooTa2.Data
 {
@@ -24,6 +25,88 @@ namespace GooTa2.Data
           NotifyPropertyChanging("Email");
           _email = value;
           NotifyPropertyChanged("Email");
+        }
+      }
+    }
+
+    private byte _red;
+    [Column]
+    public byte Red
+    {
+      get { return _red; }
+      set
+      {
+        if (_red != value)
+        {
+          NotifyPropertyChanging("Red");
+          _red = value;
+          NotifyPropertyChanged("Red");
+        }
+      }
+    }
+
+    private byte _green;
+    [Column]
+    public byte Green
+    {
+      get { return _green; }
+      set
+      {
+        if (_green != value)
+        {
+          NotifyPropertyChanging("Green");
+          _green = value;
+          NotifyPropertyChanged("Green");
+        }
+      }
+    }
+
+    private byte _blue;
+    [Column]
+    public byte Blue
+    {
+      get { return _blue; }
+      set
+      {
+        if (_blue != value)
+        {
+          NotifyPropertyChanging("Blue");
+          _blue = value;
+          NotifyPropertyChanged("Blue");
+        }
+      }
+    }
+
+    private byte _alpha;
+    [Column]
+    public byte Alpha
+    {
+      get { return _alpha; }
+      set
+      {
+        if (_alpha != value)
+        {
+          NotifyPropertyChanging("Alpha");
+          _alpha = value;
+          NotifyPropertyChanged("Alpha");
+        }
+      }
+    }
+
+    public Color Color
+    {
+      get
+      {
+        return Color.FromArgb(Alpha, Red, Green, Blue);
+      }        
+      set
+      {
+        if (value != null)
+        {
+          Alpha = value.A;
+          Red = value.R;
+          Green = value.G;
+          Blue = value.B;
         }
       }
     }

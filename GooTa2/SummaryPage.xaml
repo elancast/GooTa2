@@ -68,7 +68,30 @@
         </Grid>
       </phone:PivotItem>
       <phone:PivotItem Header="all lists" Margin="10,10,10,10" Background="Black">
-        <Grid/>
+        <ListBox ItemsSource="{Binding AllLists}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal" Margin="20,5" Tap="OnTaskTap">
+                <Grid Width="70" Height="70">
+                  <Ellipse Fill="{StaticResource PhoneAccentBrush}" Width="70" Height="70" />
+                  <TextBlock
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Text="200" 
+                    Foreground="White" 
+                    FontSize="36"
+                    Margin="0,0,0,5"
+                  />
+                </Grid>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10">
+                  <TextBlock Text="{Binding Title}" Foreground="White" FontSize="26" />
+                  <TextBlock Text="last updated 1/2/2014" FontSize="18" Foreground="White" />
+                  <TextBlock Text="{Binding Account}" FontSize="18" Foreground="{Binding AccountColorBrush}" />
+                </StackPanel>
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
       </phone:PivotItem>
       <phone:PivotItem Header="accounts" Margin="10,10,10,10" Background="Black">
         <Grid/>
