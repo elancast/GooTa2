@@ -82,7 +82,20 @@ namespace GooTa2.Data
     {
       get
       {
-        return new SolidColorBrush(Colors.Green);
+        return AccountObject.Brush;
+      }
+    }
+
+    private GAccount _accountObject;
+    public GAccount AccountObject
+    {
+      get
+      {
+        if (_accountObject == null)
+        {
+          _accountObject = GAccountDataContext.AccountForEmail(Account);
+        }
+        return _accountObject;
       }
     }
 

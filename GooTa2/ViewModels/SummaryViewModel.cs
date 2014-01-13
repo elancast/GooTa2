@@ -17,10 +17,14 @@ namespace GooTa2.ViewModels
     public ObservableCollection<TaskList> AllLists { get; private set; }
     public List<TaskList> PopularLists { get; private set; }
 
+    public ObservableCollection<GAccount> AllAccounts { get; private set; }
+
     public SummaryViewModel()
     {
       AllLists = TaskListDataContext.AllLists();
+      AllAccounts = GAccountDataContext.AllAccounts();
 
+      // For testing!!!
       if (AllLists.Count < 10)
       {
         AddTestData();
@@ -37,6 +41,7 @@ namespace GooTa2.ViewModels
     private void AddTestData()
     {
       GAccount account = new GAccount { Email = "elancast0421@gmail.com", Color = Colors.Orange };
+      AllAccounts.Add(account);
       GAccountDataContext.Instance.Accounts.InsertOnSubmit(account);
       GAccountDataContext.Instance.SubmitChanges();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
@@ -111,6 +112,14 @@ namespace GooTa2.Data
       }
     }
 
+    public SolidColorBrush Brush
+    {
+      get
+      {
+        return new SolidColorBrush(Color);
+      }
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
     private void NotifyPropertyChanged(string property)
     {
@@ -151,10 +160,20 @@ namespace GooTa2.Data
 
     private GAccountDataContext() : base(DBConnection) { }
 
-    public static List<GAccount> AllAccounts()
+    public static ObservableCollection<GAccount> AllAccounts()
     {
       var accounts = from GAccount account in Instance.Accounts select account;
-      return new List<GAccount>(accounts);
+      return new ObservableCollection<GAccount>(accounts);
+    }
+
+    public static GAccount AccountForEmail(string email)
+    {
+      var accounts = from GAccount account
+                       in Instance.Accounts
+                     where account.Email.Equals(email)
+                     select account;
+      List<GAccount> listy = new List<GAccount>(accounts);
+      return listy.Count > 0 ? listy[0] : null;
     }
   }
 }

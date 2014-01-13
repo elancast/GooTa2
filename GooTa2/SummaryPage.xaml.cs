@@ -91,5 +91,15 @@ namespace GooTa2
     {
 
     }
+
+    private void OnAccountCheckboxTap(object sender, System.Windows.Input.GestureEventArgs e)
+    {
+
+    }
+
+    private void OnAccountTap(object sender, System.Windows.Input.GestureEventArgs e)
+    {
+
+    }
   }
 }

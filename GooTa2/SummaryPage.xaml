@@ -94,7 +94,22 @@
         </ListBox>
       </phone:PivotItem>
       <phone:PivotItem Header="accounts" Margin="10,10,10,10" Background="Black">
-        <Grid/>
+        <ListBox ItemsSource="{Binding AllAccounts}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal" Tap="OnAccountCheckboxTap" Margin="20,5">
+                <CheckBox Content="" Margin="0,0,-10,0" />
+                <TextBlock 
+                  VerticalAlignment="Center" 
+                  FontSize="26" 
+                  Foreground="{Binding Brush}"
+                  Text="{Binding Email}"
+                  Tap="OnAccountTap"
+                />
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
       </phone:PivotItem>
     </phone:Pivot>
   </Grid>

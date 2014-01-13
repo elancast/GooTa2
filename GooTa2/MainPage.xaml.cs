@@ -23,15 +23,6 @@ namespace GooTa2
       // Set the data context of the listbox control to the sample data
       DataContext = App.ViewModel;
 
-      List<GAccount> accounts = GAccountDataContext.AllAccounts();
-      Debug.WriteLine("Accounts: " + accounts.Count);
-      GAccount account = new GAccount 
-      {
-        Email = "test email " + System.DateTime.UtcNow.ToFileTime()
-      };
-      GAccountDataContext.Instance.Accounts.InsertOnSubmit(account);
-      GAccountDataContext.Instance.SubmitChanges();
-
       List<Task> tasks = TaskDataContext.GetAllTasks();
       Debug.WriteLine("Tasks: " + tasks.Count);
       Task task = new Task 
