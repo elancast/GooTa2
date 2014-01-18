@@ -28,21 +28,18 @@ namespace GooTa2
     public SummaryPage()
     {
       InitializeComponent();
-      DataContext = App.SummaryPageViewModel;
-
-      // Initialize UI
-      this.FillRecentListsGrid();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
       base.OnNavigatedTo(e);
-      DataContext = App.SummaryPageViewModel;
+      DataContext = new SummaryViewModel();
+      this.FillRecentListsGrid();
     }
 
     private void FillRecentListsGrid()
     {
-      List<TaskList> list = App.SummaryPageViewModel.PopularLists;
+      List<TaskList> list = (DataContext as SummaryViewModel).PopularLists;
       for (int i = 0; i < Math.Min(_boxColors.Length, list.Count); i++)
       {
         // TODO: Fill in with details from tasks lists!
