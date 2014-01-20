@@ -47,7 +47,7 @@
   <phone:PhoneApplicationPage.ApplicationBar>
     <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
       <shell:ApplicationBarIconButton IconUri="/Images/save.png" Text="save" Click="SaveClick" />
-      <shell:ApplicationBarIconButton IconUri="/Images/delete.png" Text="delete account" Click="DeleteClick"/>
+      <shell:ApplicationBarIconButton IconUri="/Images/delete.png" Text="remove account" Click="DeleteClick"/>
     </shell:ApplicationBar>
   </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

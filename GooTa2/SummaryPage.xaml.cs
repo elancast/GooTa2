@@ -106,5 +106,11 @@ namespace GooTa2
       string path = "/EditAccountPage.xaml?email=" + email;
       NavigationService.Navigate(new Uri(path, UriKind.Relative));
     }
+
+    private void OnQuickAddTap(object sender, System.Windows.Input.GestureEventArgs e)
+    {
+      string path = "/AddTaskOrListPage.xaml";
+      NavigationService.Navigate(new Uri(path, UriKind.Relative));
+    }
   }
 }

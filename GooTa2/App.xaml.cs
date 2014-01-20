@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -33,6 +34,21 @@ namespace GooTa2
 
         return viewModel;
       }
+    }
+
+    public static SolidColorBrush AccentColor
+    {
+      get
+      {
+        return new SolidColorBrush(
+          (Color)Application.Current.Resources["PhoneAccentColor"]
+        );
+      }
+    }
+
+    public static SolidColorBrush White
+    {
+      get { return new SolidColorBrush(Colors.White); }
     }
 
     /// <summary>
